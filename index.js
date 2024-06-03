@@ -1,20 +1,27 @@
 import express from "express";
 import mysql from "mysql2";
 import cors from 'cors';
+import {
+  PORT,
+  DB_HOST,
+  DB_NAME,
+  DB_PASSWORD,
+  DB_USER,
+  DB_PORT
+} from './config.js';
 
 const app = express();
-const PORT = 4000;
 
 app.use(express.json());
 app.use(cors());
 
 
 const database = mysql.createConnection({
-    host: "viaduct.proxy.rlwy.net",
-    user: "root",
-    port: 40488,
-    password: "zkSNizCwvSCefXJKYdPIOhKIkiPSqJyx",
-    database: "railway"
+    host: DB_HOST,
+    user: DB_USER,
+    port: DB_PORT,
+    password: DB_PASSWORD,
+    database: DB_NAME
 })
 
 database.connect((err) => {

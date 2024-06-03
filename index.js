@@ -3,7 +3,7 @@ import mysql from "mysql2";
 import cors from 'cors';
 
 const app = express();
-const PORT = 8080;
+const PORT = 4000;
 
 app.use(express.json());
 app.use(cors());
@@ -91,6 +91,7 @@ app.delete('/delete/:id', (req, res) => {
     const id = parseInt(req.params.id);
     
     database.query(sql, [id], (err, data) => {
+        console.log("si")
         if(err) return res.json(err);
         return res.json("deleted");
     })
